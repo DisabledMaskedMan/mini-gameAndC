@@ -1,0 +1,26 @@
+double recursion(int n, int k)
+{
+	if (k < 0)
+	{
+		return (1.0 / n) * recursion(n, k + 1);
+	}
+	else if (k > 0)
+	{
+		return n * recursion(n, k - 1);
+	}
+	else
+	{
+		return 1.0;
+	}
+}
+
+int main()
+{
+	int n = 0;
+	int k = 0;
+	printf("请输入->");
+	scanf("%d%d", &n, &k);
+	double ret = recursion(n, k);
+	printf("%lf\n", ret);
+	return 0;
+}
