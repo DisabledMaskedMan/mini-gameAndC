@@ -24,3 +24,54 @@ int main()
 	printf("%lf\n", ret);
 	return 0;
 }
+
+int fac(int n)
+{
+	if (n == 1)
+	{
+		return 1;
+	}
+	return n * fac(n - 1);
+}
+
+int addfac(int n)
+{
+	if (n == 1)
+	{
+		return 1;
+	}
+	return fac(n) + addfac(n - 1);
+}
+
+int main()
+{
+	int n = 0;
+	int num = 0;
+	printf("请输入:>");
+	scanf("%d", &n);
+	num = addfac(n);
+	printf("%d\n", num);
+	return 0;
+}
+
+int main()
+{
+	int i = 0;
+	int n = 0;
+	int z = 0;
+	int k = 0;
+	printf("请输入:>");
+	scanf("%d", &n);
+	for (i = 1; i <= n; i++)
+	{
+		int j = 0;
+		z = 1;
+		for (j = 1; j <= i; j++)
+		{
+			z *= j;
+		}
+		k += z;
+	}
+	printf("%d\n", k);
+	return 0;
+}
