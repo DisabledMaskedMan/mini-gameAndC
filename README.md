@@ -153,3 +153,22 @@ int main()
 	void (*p1)(int(**)[5]) = test;
 	return 0;
 }
+
+void my_strcpy(char* dest, const char* src)
+{
+	while(*dest++ = *src++)
+	{
+		;
+	}
+}
+
+int main()
+{
+	char arr1[] = "abcdef";
+	char arr2[] = "###";
+	void(*pf)(char*, const char*) = my_strcpy;
+	void(*pfArr[4])(char*, const char*) = { my_strcpy };
+	my_strcpy(arr1, arr2);
+	printf("%s\n", arr1);
+	return 0;
+}
