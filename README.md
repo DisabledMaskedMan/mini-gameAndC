@@ -134,3 +134,22 @@ int main()
 	}
 	return 0;
 }
+
+void test(int(**p)[5])
+{
+	;
+}
+
+int main()
+{
+	int arr1[5] = { 1,2,3,4,5 };
+	int arr2[5] = { 6,7,8,9,10 };
+	int arr3[5] = { 11,12,13,14,15 };
+	int* parr[3] = { arr1, arr2, arr3 };
+	printf("%d\n", **parr);
+	int(*parr1[3])[5] = {&arr1, &arr2, &arr3};
+	printf("%d\n", ***parr1);
+	test(parr1);
+	void (*p1)(int(**)[5]) = test;
+	return 0;
+}
