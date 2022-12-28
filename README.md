@@ -172,3 +172,33 @@ int main()
 	printf("%s\n", arr1);
 	return 0;
 }
+
+int cmp_f(const void* e1, const void* e2)
+{
+	float num = *(float*)e1 - *(float*)e2;
+	if (num > 0)
+	{
+		return 1;
+	}
+	else if (num == 0)
+	{
+		return 0;
+	}
+	else
+	{
+		return -1;
+	}
+}
+
+int main()
+{
+	float arr[10] = { 1.9, 1.3, 3.1, 4.4, 9.9, 0.9, 2.2, 3.1, 4.4, 5.0 };
+	int sz = sizeof(arr) / sizeof(arr[0]);
+	qsort(arr, sz, sizeof(arr[0]), cmp_f);
+	int i = 0;
+	for (i = 0; i < sz; i++)
+	{
+		printf("%f\n", arr[i]);
+	}
+	return 0;
+}
