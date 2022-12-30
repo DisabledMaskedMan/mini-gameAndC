@@ -202,3 +202,27 @@ int main()
 	}
 	return 0;
 }
+
+int main()
+{
+	int a = 0x11223344;
+	int* p = &a;
+	int arr[4] = { 1,2,3,4 };
+	printf("%d\n", arr[-1]);
+	return 0;
+}
+
+int main()
+{
+	int arr[3][4] = { 0 };
+	printf("%p\n", &arr[0] + 1);
+	printf("%p\n", arr + 1);
+	printf("%d\n", sizeof(arr));
+	printf("%d\n", sizeof(arr[0]));
+	printf("%d\n", sizeof(&arr[0]));
+	printf("%d\n", sizeof(arr + 0));
+	printf("%d\n", sizeof(arr[0] + 1));
+	printf("%d\n", sizeof(&arr[0] + 1));
+	printf("%d\n", sizeof(arr + 1));
+	return 0;
+}
