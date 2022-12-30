@@ -226,3 +226,240 @@ int main()
 	printf("%d\n", sizeof(arr + 1));
 	return 0;
 }
+
+void move(int* p, int sz)
+{
+	int tmp = 0;
+	int left = 1;
+	int right = sz - 1;
+	if (sz % 2 == 0)
+	{
+		right = sz - 2;
+		while (left < right)
+		{
+			tmp = *(p + left);
+			*(p + left) = *(p + right);
+			*(p + right) = tmp;
+			right -= 2;
+			left += 2;
+		}
+	}
+	else
+	{
+		while (left < right)
+		{
+			tmp = *(p + left);
+			*(p + left) = *(p + right);
+			*(p + right) = tmp;
+			left += 2;
+			right -= 2;
+		}
+	}
+}
+
+int main()
+{
+	int arr[] = { 1,2,3,4,5,6,7,8,9 };
+	int sz = sizeof(arr) / sizeof(arr[0]);
+	move(arr, sz);
+	int i = 0;
+	for (i = 0; i < sz; i++)
+	{
+		printf("%d  ", arr[i]);
+	}
+	return 0;
+}
+
+int main()
+{
+	int money = 0;
+	int empty = 0;
+	int total = 0;
+	scanf("%d", &money);
+	total = money;
+	empty = money;
+	while (empty >= 2)
+	{
+		total += empty / 2;
+		empty = empty / 2 + empty % 2;
+	}
+	printf("%d\n", total);
+	return 0;
+}
+
+int main()
+{
+	int x = 0;
+	int y = 1;
+	again: printf("请输入一个奇数:>");
+	scanf("%d", &x);
+	if (x % 2 != 1)
+	{
+		printf("输入错误，请重新输入！\n");
+		goto again;
+	}
+	int n = (x - 1) / 2;
+	while(n)
+	{
+		printf("%*s", n, " ");
+		int i = 0;
+		for (i = 0; i < y; i++)
+		{
+			printf("%c", '*');
+		}
+		printf("\n");
+		n--;
+		y += 2;
+	}
+	while (y > 0)
+	{
+		int i = 0;
+		if (n != 0)
+		{
+			printf("%*s", n, " ");
+		}
+		for (i = 0; i < y; i++)
+		{
+			printf("%c", '*');
+		}
+		printf("\n");
+		y -= 2;
+		n++;
+	}
+	return 0;
+}
+
+int cal_digit(int x)
+{
+	if (x != 0)
+	{
+		return 1 + cal_digit(x / 10);
+	}
+	else
+	{
+		return 0;
+	}
+}
+
+int fact(int x, int n)
+{
+	if (n != 0)
+	{
+		return x * fact(x, n - 1);
+	}
+	else
+	{
+		return 1;
+	}
+}
+
+int main()
+{
+	int i = 0;
+	for (i = 1; i <= 100000; i++)
+	{
+		int sum = 0;
+		int n = cal_digit(i);
+		int j = 0;
+		for (j = 0; j < n; j++)
+		{
+			sum += fact((i / fact(10, j)) % 10, n);
+		}
+		if (sum == i)
+		{
+			printf("%d  ", sum);
+		}
+	}
+	return 0;
+}
+
+int main()
+{
+	int x = 0;
+	int y = 0;
+	int num = 0;
+	scanf("%d%d", &x, &y);
+	int z = x;
+	int i = 0;
+	for (i = 1; i <= y; i++)
+	{
+		num = num + x;
+		x = 10 * x + z;
+	}
+	printf("%d\n", num);
+	return 0;
+}
+
+int func(int x, int y, int z)
+{
+	if (y != 0)
+	{
+		return x + func(10 * x + z, y - 1, z);
+	}
+	else
+	{
+		return 0;
+	}
+}
+
+int main()
+{
+	int x = 0;
+	int y = 0;
+	scanf("%d%d", &x, &y);
+	int ret = func(x, y, x);
+	printf("%d\n", ret);
+	return 0;
+}
+
+void inversion_str(char* p)
+{
+	assert(p);
+
+	int count = 0;
+	char* p1 = p;
+	while (*p1)
+	{
+		if (*p1 != NULL)
+		{
+			count++;
+		}
+		p1++;
+	}
+	char* start = p;
+	char* end = p + count - 1;
+	while (start < end)
+	{
+		char tmp = *start;
+		*start = *end;
+		*end = tmp;
+		start++;
+		end--;
+	}
+
+}
+
+int main()
+{
+	char arr[256] = {0};
+	fgets(arr, 20, stdin);
+	inversion_str(arr);
+	printf("%s\n", arr);
+	return 0;
+}
+
+int main()
+{
+	int arr[5] = { 1,2,3,4,5 };
+	char arr1[] = "abcde";
+	printf("%d\n", &arr[4] - &arr[0]);
+	printf("%d\n", &arr1[4] - &arr1[0]);
+	return 0;
+}
+
+int main()
+{
+	const char* p = "hello";
+	const char* a[] = { "work", "at", "alibaba" };
+	return 0;
+}
