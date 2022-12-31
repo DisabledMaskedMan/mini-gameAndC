@@ -58,6 +58,7 @@ int main()
 	{
 		printf("请输入想要右旋的字符个数，字符串的长度为%d,请输入:>", sz);
 		scanf("%d", &n);
+		assert(n <= sz);
 		right_revolve(arr, sz, n);
 		printf("%s\n", arr);
 		break;
@@ -66,6 +67,7 @@ int main()
 	{
 		printf("请输入想要左旋的字符个数，字符串的长度为%d,请输入:>", sz);
 		scanf("%d", &n);
+		assert(n <= sz);
 		left_revolve(arr, sz, n);
 		printf("%s\n", arr);
 		break;
@@ -102,6 +104,7 @@ void reverse(char* left, char* right)
 void left_revolve(char* p, int n)
 {
 	int sz = strlen(p);
+	assert(n <= sz);
 	reverse(p, p + n - 1);
 	reverse(p + n, p + sz - 1);
 	reverse(p, p + sz - 1);
