@@ -2,6 +2,7 @@
 #include <string.h>
 #include <assert.h>
 
+//1.暴力求解法
 void meun()
 {
 	printf("**********************************\n");
@@ -80,5 +81,39 @@ int main()
 		break;
 	}
 	}
+	return 0;
+}
+
+//2.三步求解法
+void reverse(char* left, char* right)
+{
+	assert(left);
+	assert(right);
+	while (left < right)
+	{
+		char tmp = *left;
+		*left = *right;
+		*right = tmp;
+		left++;
+		right--;
+	}
+}
+
+void left_revolve(char* p, int n)
+{
+	int sz = strlen(p);
+	reverse(p, p + n - 1);
+	reverse(p + n, p + sz - 1);
+	reverse(p, p + sz - 1);
+}
+
+int main()
+{
+	char arr[] = "abcdefg";
+	int n = 0;
+	printf("您需要左旋的字符个数，请输入:>");
+	scanf("%d", &n);
+	left_revolve(arr, n);
+	printf("%s\n", arr);
 	return 0;
 }
