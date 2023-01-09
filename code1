@@ -108,3 +108,34 @@ int main()
 	printf("\n");
 	print(arr2, sz);
 }
+
+int main()
+{
+	int a = 6;
+	int b = 8;
+	int c = a | b;
+	printf("%d", c);
+	return 0;
+}
+ 
+ 
+// & 按位与
+int main()
+{
+	int a = 6;
+	int b = 8;
+	int c = a & b;
+	printf("%d", c);
+	return 0;
+}
+int main()
+{
+	int arr[10] = { 1 ,2 ,3 ,4 ,5 , 6 , 7 , 8 , 9 , 10 };
+	int i = 0;
+	while(i<10)
+	{
+			printf("%d ", arr[i]);
+			i++;
+	}
+	return 0;
+}
