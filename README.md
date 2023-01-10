@@ -463,3 +463,20 @@ int main()
 	const char* a[] = { "work", "at", "alibaba" };
 	return 0;
 }
+
+#define MYOFFSETOF(type, x) (int)&(((type*)0)->x)
+
+struct S
+{
+	char a;
+	int b;
+	char c;
+};
+
+int main()
+{
+	printf("%d\n", MYOFFSETOF(struct S, a));
+	printf("%d\n", MYOFFSETOF(struct S, b));
+	printf("%d\n", MYOFFSETOF(struct S, c));
+	return 0;
+}
