@@ -480,3 +480,22 @@ int main()
 	printf("%d\n", MYOFFSETOF(struct S, c));
 	return 0;
 }
+
+int add()
+{
+	return 2;
+}
+
+int (*s_add(int(*p)()))()
+{
+	return p;
+}
+
+int main()
+{
+	int(*p1)() = &add;
+	int(*(*p2)(int(*)()))() = &s_add;
+	int ret = p2(*p1)();
+	printf("%d\n", ret);
+	return 0;
+}
