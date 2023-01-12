@@ -139,3 +139,32 @@ int main()
 	}
 	return 0;
 }
+
+int main()
+{
+	int a = 0;
+	int x = 3;
+	char password[20] = { 0 };
+	for (a = 1; a <= 3; a++)
+	{
+		printf("请输入你的密码");
+		scanf("%s", password);
+			if (strcmp(password,"123456789") == 0)
+			{
+				printf("密码正确");
+				break;
+			}
+			else
+			{
+				x--;
+				printf("输入错误，您还剩下%d次机会\n", x);
+				if (x == 0)
+				{
+					printf("登陆失败");
+					break;
+				}
+				continue;
+			}
+	}
+	return 0;
+}
