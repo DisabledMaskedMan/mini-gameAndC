@@ -168,3 +168,23 @@ int main()
 	}
 	return 0;
 }
+
+int main()
+{
+	double i = 0;
+	int n = 0;
+	double sum = 0;
+	double ret = 0;
+	do
+	{
+		printf("请输入:>");
+		scanf("%lf", &i);
+		if (i < 0)
+			break;
+		sum += i;
+		n++;
+	} while (i >= 0);
+	ret = sum / n;
+	printf("%lf", ret);
+	return 0;
+}
