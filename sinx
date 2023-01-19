@@ -1,0 +1,36 @@
+#include <stdio.h>
+#include <math.h>
+
+double fact(double j)
+{
+	if (1 == j)
+	{
+		return 1;
+	}
+	return j * fact(j - 1);
+}
+
+double sin(double x)
+{
+	double ret = 0.0;
+	x = x * 3.1415926 / 180;
+	double i = 1;
+	for (i = 1; i <= 100; i++)
+	{
+		double k = pow(-1, i - 1);
+		double j = 2 * i - 1;
+		double n = fact(j);
+		ret = ret + k * pow(x, j) / n;
+	}
+	return ret;
+}
+
+int main()
+{
+	double x = 0;
+	printf("请输入(无需输入符号):>");
+	scanf("%lf", &x);
+	double ret = sin(x);
+	printf("%lf", ret);
+	return 0;
+}
