@@ -258,3 +258,44 @@ int main()
 	}
 	return 0;
 }
+
+#define N 6
+int main()
+{
+	int arr[N] = { 0 };
+	int i = 0;
+	for (i = 0; i < N; i++)
+	{
+		printf("请输入:>");
+		scanf("%d", arr + i);
+	}
+	for (i = 0; i < N; i++)
+	{
+		int j = 0;
+		for (j = i + 1; j < N; j++)
+		{
+			if (arr[i] < arr[j])
+			{
+				i = j - 1;
+				break;
+			}
+		}
+		if (j == N)
+		{
+			int tmp = arr[i];
+			arr[i] = arr[N - 1];
+			arr[N - 1] = tmp;
+			int z = 0;
+			for (z = 0; z < N; z++)
+			{
+				printf("%d ", arr[z]);
+			}
+			return 0;
+		}
+	}
+	for (i = 0; i < N; i++)
+	{
+		printf("%d ", arr[i]);
+	}
+	return 0;
+}
