@@ -299,3 +299,32 @@ int main()
 	}
 	return 0;
 }
+
+int a = 5;
+int main()
+{
+	int s = 0;
+	{
+		int a = 3;
+		s += a++;
+	}
+	s += a++;
+	printf("%d", s);
+	return 0;
+}
+
+int a = 5;
+void fun()
+{
+	a = 1;
+}
+
+int main()
+{
+	a = 3;
+	fun();
+	printf("%d\n", a);
+	int a = 10;
+	printf("%d", a);
+	return 0;
+}
