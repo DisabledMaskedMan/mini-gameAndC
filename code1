@@ -328,3 +328,20 @@ int main()
 	printf("%d", a);
 	return 0;
 }
+
+struct student
+{
+	int num;
+	int age;
+};
+
+int main()
+{
+	struct student s[3] = { {1,20},{2,19},{3,18} };
+	struct student* p = s;
+	printf("%d\n", (*++p).age);
+	printf("%d\n", (*p++).age);
+	printf("%d\n", (p++)->age);
+	printf("%d", ++(p->age));
+	return 0;
+}
