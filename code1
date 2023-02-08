@@ -388,3 +388,31 @@ int main()
 	printf("%d\n", c);
 	return 0;
 }
+
+int SUB(int x, int y)
+{
+	return x - y;
+}
+
+int ADD(int x, int y, int(*p)(int, int))
+{
+	return x + y + p(x, y);
+}
+
+int main()
+{
+	int x = 10;
+	int y = 20;
+	int z = ADD(x, y, SUB);
+	printf("%d\n", z);
+	return 0;
+}
+
+int main()
+{
+	FILE* fp = fopen("test.txt", "w");
+	fputs("hello world", fp);
+	fclose(fp);
+	fclose(fp);
+	return 0;
+}
