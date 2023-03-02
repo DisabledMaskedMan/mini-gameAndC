@@ -457,3 +457,40 @@ int main()
 		printf("%d ", p[i]);
 	return 0;
 }
+
+int removeElement(int* nums, int numssize, int val)
+{
+	int* start = nums;
+	int* end = nums;
+	int newsize = 0;
+	int tmp = 0;
+	int i = 0;
+	for (i = 0; i < numssize; i++)
+	{
+		if ((*end) != val)
+		{
+			tmp = *end;
+			*end = *start;
+			*start = tmp;
+			start++;
+			end++;
+			newsize++;
+		}
+		else
+			end++;
+	}
+	return newsize;
+}
+
+int main()
+{
+	int arr[] = {1,3,3,2,3,6,7,7,3};
+	int n = sizeof(arr) / sizeof(arr[0]);
+	int num = 3;
+	int size = removeElement(arr, n, num);
+	printf("%d\n", size);
+	int i = 0;
+	for (i = 0; i < n; i++)
+		printf("%d ", arr[i]);
+	return 0;
+}
