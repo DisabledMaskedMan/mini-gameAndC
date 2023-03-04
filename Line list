@@ -70,3 +70,50 @@ int main()
 	test1();
 	return 0;
 }
+
+struct ListNode {
+    int val;
+	struct ListNode *next;
+};
+
+struct ListNode* removeElements(struct ListNode* head, int val)
+{
+	struct ListNode* trail = head;
+	struct ListNode* trail2 = NULL;
+	struct ListNode* tmp = NULL;
+	if (head == NULL)
+		return head;
+	while (trail)
+	{
+		if (head->val == val)
+		{
+			tmp = head->next;
+			free(head);
+			head = tmp;
+			trail = head;
+		}
+		else
+		{
+			if (trail->val != val)
+			{
+				trail2 = trail;
+				trail = trail->next;
+			}
+			else
+			{
+				trail2->next = trail->next;
+				free(trail);
+				trail = trail2->next;
+			}
+		}
+	}
+	return head;
+}
+
+int main()
+{
+	struct ListNode* plist = (struct ListNode*)malloc(sizeof(struct ListNode));
+	removeElements(plist, 0);
+	free(plist);
+	plist == NULL;
+}
