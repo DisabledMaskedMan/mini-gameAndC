@@ -1,0 +1,72 @@
+include<stdio.h>
+include<assert.h>
+
+struct LList
+{
+	int data;
+	struct LList* next;
+};
+
+struct LList* plist = NULL;
+
+void SListPopFront(struct LList** pphead)
+{
+	assert(*pphead != NULL);
+
+	struct LList* tmp = (*pphead)->next;
+	free(*pphead);
+	*pphead = tmp;
+}
+
+void SListPushBack(struct LList** pphead,int x)
+{
+	struct LList* NewNode = (struct LList*)malloc(sizeof(struct LList));
+	if (NewNode == NULL)
+		return;
+	NewNode->data = x;
+	NewNode->next = NULL;
+	struct LList* tail = *pphead;
+
+	if ((*pphead) == NULL)
+	{
+		*pphead = NewNode;
+		return;
+	}
+	while (tail->next)
+	{
+		tail = tail->next;
+	}
+	tail->next = NewNode;
+}
+
+void SListPrint(struct LList** pphead)
+{
+	struct LList* tail = *pphead;
+	if (*pphead == NULL)
+		return;
+	while (tail != NULL)
+	{
+		printf("%d->", tail->data);
+		tail = tail->next;
+	}
+	printf("NULL\n");
+}
+
+void test1()
+{
+	SListPushBack(&plist, 1);
+	SListPushBack(&plist, 2);
+	SListPushBack(&plist, 3);
+	SListPushBack(&plist, 4);
+
+	SListPopFront(&plist);
+
+
+	SListPrint(&plist);
+}
+
+int main()
+{
+	test1();
+	return 0;
+}
