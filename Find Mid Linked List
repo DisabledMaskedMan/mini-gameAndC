@@ -1,0 +1,25 @@
+struct ListNode 
+{
+	int val;
+	struct ListNode* next;
+};
+
+struct ListNode* middleNode(struct ListNode* head) 
+{
+	struct ListNode* point = (struct ListNode*)malloc(sizeof(struct ListNode));
+	int num = 0;
+	point = head;
+	while ((point->next) != NULL)
+	{
+		point = point->next;
+		num++;
+	}
+	if (1 == (num & 1))
+		num = num / 2 + 1;
+	else
+		num = num / 2;
+	point = head;
+	while (num--)
+		point = point->next;
+	return point;
+}
