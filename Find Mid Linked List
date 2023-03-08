@@ -23,3 +23,25 @@ struct ListNode* middleNode(struct ListNode* head)
 		point = point->next;
 	return point;
 }
+
+
+//two way
+struct ListNode 
+{
+	int val;
+	struct ListNode* next;
+};
+
+struct ListNode* middleNode(struct ListNode* head)
+{
+	struct ListNode* flow = (struct ListNode*)malloc(sizeof(struct ListNode));
+	struct ListNode* fast = (struct ListNode*)malloc(sizeof(struct ListNode));
+	fast = head;
+	flow = head;
+	while ((fast != NULL) && ((fast->next) != NULL))
+	{
+		flow = flow->next;
+		fast = fast->next->next;
+	}
+	return flow;
+}
