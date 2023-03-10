@@ -1,0 +1,33 @@
+struct ListNode 
+{
+	int val;
+	struct ListNode* next;
+};
+
+struct ListNode* partition(struct ListNode* pHead, int x)
+{
+	if (!pHead)
+		return pHead;
+	struct ListNode* NewHead1 = (struct ListNode*)malloc(sizeof(struct ListNode));
+	struct ListNode* NewHead2 = (struct ListNode*)malloc(sizeof(struct ListNode));
+	struct ListNode* cur1 = NewHead1;
+	struct ListNode* cur2 = NewHead2;
+	NewHead1->next = NULL;
+	NewHead2->next = NULL;
+	while (pHead)
+	{
+		if (pHead->val < x)
+		{
+			cur1->next = pHead;
+			cur1 = pHead;
+		}
+		else
+		{
+			cur2->next = pHead;
+			cur2 = pHead;
+		}
+		pHead = pHead->next;
+	}
+	cur1->next = NewHead2->next;
+	return NewHead1->next;
+}
