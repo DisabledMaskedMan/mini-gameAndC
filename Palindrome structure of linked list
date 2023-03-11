@@ -1,0 +1,45 @@
+struct ListNode 
+{
+	int val;
+	struct ListNode* next;
+};
+
+bool chkPalindrome(struct ListNode* A) 
+{
+	if (!(A && A->next))
+		return true;
+	struct ListNode* slow = A;
+	struct ListNode* fast = A;
+	struct ListNode* Tmp = NULL;
+	struct ListNode* Prev = NULL;
+	struct ListNode* Cur = NULL;
+	struct ListNode* Back = NULL;
+	struct ListNode* NewNode1 = A;
+	struct ListNode* NewNode2 = NULL;
+	while (fast && fast->next)
+	{
+		fast = fast->next->next;
+		if (!(fast && fast->next))
+			Tmp = slow;
+		slow = slow->next;
+	}
+	Tmp->next = NULL;
+	Cur = slow;
+	Back = Cur->next;
+	while (Back)
+	{
+		Back = Cur->next;
+		Cur->next = Prev;
+		Prev = Cur;
+		Cur = Back;
+	}
+	NewNode2 = Prev;
+	while (NewNode2 && NewNode1)
+	{
+		if (NewNode1->val != NewNode2->val)
+			return false;
+		NewNode1 = NewNode1->next;
+		NewNode2 = NewNode2->next;
+	}
+	return true;
+}
