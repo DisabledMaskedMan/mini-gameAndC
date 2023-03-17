@@ -1,3 +1,6 @@
+#include <stdio.h>
+#include <asserrt.h>
+
 struct Node
 {
 	int val;
