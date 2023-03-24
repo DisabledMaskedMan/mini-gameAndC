@@ -1,0 +1,65 @@
+#include <stdio.h>
+#include <stdbool.h>
+#include <stdlib.h>
+
+typedef struct {
+	int* a;
+	int front;
+	int tail;
+	int capacity;
+} MyCircularQueue;
+
+bool myCircularQueueIsEmpty(MyCircularQueue* obj);
+bool myCircularQueueIsFull(MyCircularQueue* obj);
+
+MyCircularQueue* myCircularQueueCreate(int k) {
+	MyCircularQueue* MCQ = (MyCircularQueue*)malloc(sizeof(MyCircularQueue));
+	MCQ->capacity = k + 1;
+	MCQ->front = MCQ->tail = 0;
+	MCQ->a = (int*)malloc(MCQ->capacity * sizeof(int));
+
+	return MCQ;
+}
+
+bool myCircularQueueEnQueue(MyCircularQueue* obj, int value) {
+	if (myCircularQueueIsFull(obj))
+		return false;
+	(obj->a)[obj->tail] = value;
+	obj->tail = (obj->tail + 1) % obj->capacity;
+	return true;
+}
+
+bool myCircularQueueDeQueue(MyCircularQueue* obj) {
+	if (myCircularQueueIsEmpty(obj))
+		return false;
+	obj->front = (obj->front + 1) % obj->capacity;
+	return true;
+}
+
+int myCircularQueueFront(MyCircularQueue* obj) {
+	if (myCircularQueueIsEmpty(obj))
+		return -1;
+
+	return obj->a[obj->front];
+}
+
+int myCircularQueueRear(MyCircularQueue* obj) {
+	if (myCircularQueueIsEmpty(obj))
+		return -1;
+	int x = (obj->tail + obj->capacity - 1) % obj->capacity;
+	return obj->a[x];
+}
+
+bool myCircularQueueIsEmpty(MyCircularQueue* obj) {
+	return obj->tail == obj->front;
+}
+
+bool myCircularQueueIsFull(MyCircularQueue* obj) {
+	return ((obj->tail + 1) % obj->capacity) == obj->front;
+}
+
+void myCircularQueueFree(MyCircularQueue* obj) {
+	free(obj->a);
+	obj->a = NULL;
+	free(obj);
+}
