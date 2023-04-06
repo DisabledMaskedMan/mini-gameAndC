@@ -1,0 +1,92 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef char BTDataType;
+
+typedef struct BinaryTreeNode
+{
+	struct BinaryTreeNode* Left;
+	struct BinaryTreeNode* Right;
+	BTDataType data;
+}BTNode;
+
+void PrevBT(BTNode* Root)
+{
+	if (Root == NULL)
+	{
+		printf("NULL ");
+		return;
+	}
+	printf("%c ", Root->data);
+
+	PrevBT(Root->Left);
+	PrevBT(Root->Right);
+}
+
+void MidBT(BTNode* Root)
+{
+	if (Root == NULL)
+	{
+		printf("NULL ");
+		return;
+	}
+	MidBT(Root->Left);
+
+	printf("%c ", Root->data);
+
+	MidBT(Root->Right);
+}
+
+void BackBT(BTNode* Root)
+{
+	if (Root == NULL)
+	{
+		printf("NULL ");
+		return;
+	}
+	BackBT(Root->Left);
+
+	BackBT(Root->Right);
+
+	printf("%c ", Root->data);
+}
+
+int main()
+{
+	BTNode* A = (BTNode*)malloc(sizeof(BTNode));
+	A->Left = NULL;
+	A->Right = NULL;
+	A->data = 'A';
+
+	BTNode* B = (BTNode*)malloc(sizeof(BTNode));
+	B->Left = NULL;
+	B->Right = NULL;
+	B->data = 'B';
+
+	BTNode* C = (BTNode*)malloc(sizeof(BTNode));
+	C->Left = NULL;
+	C->Right = NULL;
+	C->data = 'C';
+
+	BTNode* D = (BTNode*)malloc(sizeof(BTNode));
+	D->Left = NULL;
+	D->Right = NULL;
+	D->data = 'D';
+
+	BTNode* E = (BTNode*)malloc(sizeof(BTNode));
+	E->Left = NULL;
+	E->Right = NULL;
+	E->data = 'E';
+
+	A->Left = B;
+	A->Right = C;
+	B->Left = D;
+	B->Right = E;
+
+	PrevBT(A);
+	printf("\n");
+	MidBT(A);
+	printf("\n");
+	BackBT(A);
+	printf("\n");
+}
