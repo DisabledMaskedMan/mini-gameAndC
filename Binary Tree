@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+int size;
+
 typedef char BTDataType;
 
 typedef struct BinaryTreeNode
@@ -9,6 +11,52 @@ typedef struct BinaryTreeNode
 	struct BinaryTreeNode* Right;
 	BTDataType data;
 }BTNode;
+
+void BTsize(BTNode* Root)
+{
+	if (Root == NULL)
+	{
+		return;
+	}
+	size++;
+
+	BTsize(Root->Left);
+	BTsize(Root->Right);
+}
+
+void BTsize2(BTNode* Root, int* size2)
+{
+	if (Root == NULL)
+	{
+		return;
+	}
+	*size2++;
+
+	BTsize2(Root->Left, size2);
+	BTsize2(Root->Right, size2);
+}
+
+int BTsize3(BTNode* Root)
+{
+	if (Root == NULL)
+		return 0;
+	return  1 + BTsize3(Root->Left) + BTsize3(Root->Right);
+}
+
+int BTsize4(BTNode* Root)
+{
+	if (Root == NULL)
+		return 0;
+	return  BTsize4(Root->Left) + 1 + BTsize4(Root->Right);
+}
+
+int BTsize5(BTNode* Root)
+{
+	if (Root == NULL)
+		return 0;
+	return  BTsize5(Root->Left) +  BTsize5(Root->Right) + 1;
+}
+
 
 void PrevBT(BTNode* Root)
 {
@@ -89,4 +137,7 @@ int main()
 	printf("\n");
 	BackBT(A);
 	printf("\n");
+	
+	BTsize(A);
+	printf("%d %d %d", BTsize3(A), BTsize4(A), BTsize5(A));
 }
