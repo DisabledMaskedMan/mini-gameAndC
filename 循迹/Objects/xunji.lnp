@@ -1,0 +1,7 @@
+".\Objects\main.obj",
+".\Objects\timer0.obj",
+".\Objects\motoset.obj",
+".\Objects\CarRun.obj",
+".\Objects\delay.obj" 
+TO ".\Objects\xunji" 
+PRINT(".\Listings\xunji.m51") RAMSIZE(256) 
