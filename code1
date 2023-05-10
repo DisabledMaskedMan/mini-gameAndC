@@ -494,3 +494,26 @@ int main()
 		printf("%d ", arr[i]);
 	return 0;
 }
+
+ struct TreeNode {
+	int val;
+	struct TreeNode *left;
+	struct TreeNode *right;
+ };
+ 
+ int TreeDepth(struct TreeNode* root)
+ {
+	 if (root == NULL)
+		 return 0;
+	 return TreeDepth(root->left) + TreeDepth(root->right) + 1;
+
+ }
+
+bool isBalanced(struct TreeNode* root) {
+	if (root == NULL)
+		return true;
+	int LeftDepth = TreeDepth(root->left);
+	int RightDepth = TreeDepth(root->right);
+
+	return (abs(LeftDepth - RightDepth) < 2) && isBalanced(root->left) && isBalanced(root->right);
+}
