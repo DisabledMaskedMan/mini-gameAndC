@@ -1,0 +1,55 @@
+#include <stdio.h>
+
+void Print(int* a, int n)
+{
+	for(int i = 0; i < n; i++)
+	{
+		printf("%d ", a[i]);
+	}
+	printf("\n");
+}
+
+void QuickSort(int* a, int left, int right)
+{
+	if (left >= right )
+		return;
+
+	int Start = left;
+	int End = right;
+	int Hole = Start;
+	int Key = a[Hole];
+	while (Start < End)
+	{
+		while (a[End] >= Key && Start < End)
+		{
+			End--;
+		}
+		a[Hole] = a[End];
+		Hole = End;
+
+		while (a[Start] <= Key && Start < End)
+		{
+			Start++;
+		}
+		a[Hole] = a[Start];
+		Hole = Start;
+	}
+	a[Hole] = Key;
+
+	QuickSort(a, left, Hole - 1);
+	QuickSort(a, Hole + 1, right);
+}
+
+void Text1()
+{
+	int a[10] = { 3, 7, 1, 4, 2, 6, 9, 8, 0, 5 };
+	QuickSort(a, 0, sizeof(a) / sizeof(a[0]) - 1);
+	Print(a, sizeof(a) / sizeof(a[0]));
+}
+
+int main()
+{
+	Text1();
+
+
+}
