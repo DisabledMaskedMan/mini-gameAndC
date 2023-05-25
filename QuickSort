@@ -40,6 +40,20 @@ void QuickSort(int* a, int left, int right)
 	QuickSort(a, Hole + 1, right);
 }
 
+void BubbleSort(int* a, int n)
+{
+	int Tmp = n;
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = 0; j < Tmp - 1; j++)
+		{
+			if (a[j] > a[j + 1])
+				Swap(&a[j], &a[j + 1]);
+		}
+		Tmp--;
+	}
+}
+
 void Text1()
 {
 	int a[10] = { 3, 7, 1, 4, 2, 6, 9, 8, 0, 5 };
