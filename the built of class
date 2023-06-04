@@ -89,8 +89,3 @@ void S::show() const
 	std::cout << share_val << std::endl;
 	std::cout << total_val << std::endl;
 }
-
-const int& Sum(const int& x, const int& y)
-{
-	return x + y;
-}
