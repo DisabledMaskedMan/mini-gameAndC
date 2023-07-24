@@ -1,9 +1,0 @@
-".\Objects\main.obj",
-".\Objects\I2C.obj",
-".\Objects\AT24C02.obj",
-".\Objects\delay.obj",
-".\Objects\Nixie.obj",
-".\Objects\timer0.obj",
-".\Objects\key.obj" 
-TO ".\Objects\miaobiao" 
-PRINT(".\Listings\miaobiao.m51") RAMSIZE(256) 
