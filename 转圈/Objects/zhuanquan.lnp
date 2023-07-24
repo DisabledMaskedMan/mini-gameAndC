@@ -1,6 +1,0 @@
-".\Objects\main.obj",
-".\Objects\delay.obj",
-".\Objects\timer0.obj",
-".\Objects\wheel.obj" 
-TO ".\Objects\zhuanquan" 
-PRINT(".\Listings\zhuanquan.m51") RAMSIZE(256) 
